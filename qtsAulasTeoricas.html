@@ -1,0 +1,154 @@
+<body class="container">
+  <body>
+    <div id="container">
+      <!-- ########## CONTEÚDO -->
+      <div id="content">
+        <h2 class="tituloHR">RESUMO DAS AULAS</h2>
+        <table>
+          <tr>
+            <td>
+              <a
+                href="/portal/habilitacao/biometriaValid"
+                id="link1529002261"
+                onclick=" event.returnValue = false; return false;"
+                >LEGISLAÇÃO DE TRÂNSITO</a
+              >
+              <script type="text/javascript">
+                //
+                                                <![CDATA[
+                Event.observe('link1529002261', 'click', function(event) { $("divDetalhes").update("");; new Ajax.Updater('divDetalhes','/portal/habilitacao/biometriaValid', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {$("divDetalhes").scrollTo();Element.hide('div-waiting');}, onLoading:function(request) {Element.show('div-waiting');}, parameters:{"renach":"RJ332806847","tipo":"detalhesTeorico","disciplina":"LEGISLA\u00c7\u00c3O DE TR\u00c2NSITO"}, requestHeaders:['X-Update', 'divDetalhes']}) }, false);
+                //]]>
+              </script>
+            </td>
+            <td>11</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="/portal/habilitacao/biometriaValid"
+                id="link1649477588"
+                onclick=" event.returnValue = false; return false;"
+                >PRIMEIROS SOCORROS</a
+              >
+              <script type="text/javascript">
+                //
+                                                <![CDATA[
+                Event.observe('link1649477588', 'click', function(event) { $("divDetalhes").update("");; new Ajax.Updater('divDetalhes','/portal/habilitacao/biometriaValid', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {$("divDetalhes").scrollTo();Element.hide('div-waiting');}, onLoading:function(request) {Element.show('div-waiting');}, parameters:{"renach":"RJ332806847","tipo":"detalhesTeorico","disciplina":"PRIMEIROS SOCORROS"}, requestHeaders:['X-Update', 'divDetalhes']}) }, false);
+                //]]>
+              </script>
+            </td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="/portal/habilitacao/biometriaValid"
+                id="link1420869127"
+                onclick=" event.returnValue = false; return false;"
+                >DIREÇÃO DEFENSIVA</a
+              >
+              <script type="text/javascript">
+                //
+                                                <![CDATA[
+                Event.observe('link1420869127', 'click', function(event) { $("divDetalhes").update("");; new Ajax.Updater('divDetalhes','/portal/habilitacao/biometriaValid', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {$("divDetalhes").scrollTo();Element.hide('div-waiting');}, onLoading:function(request) {Element.show('div-waiting');}, parameters:{"renach":"RJ332806847","tipo":"detalhesTeorico","disciplina":"DIRE\u00c7\u00c3O DEFENSIVA"}, requestHeaders:['X-Update', 'divDetalhes']}) }, false);
+                //]]>
+              </script>
+            </td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="/portal/habilitacao/biometriaValid"
+                id="link1380073943"
+                onclick=" event.returnValue = false; return false;"
+                >MEIO AMBIENTE CIDADANIA</a
+              >
+              <script type="text/javascript">
+                //
+                                                <![CDATA[
+                Event.observe('link1380073943', 'click', function(event) { $("divDetalhes").update("");; new Ajax.Updater('divDetalhes','/portal/habilitacao/biometriaValid', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {$("divDetalhes").scrollTo();Element.hide('div-waiting');}, onLoading:function(request) {Element.show('div-waiting');}, parameters:{"renach":"RJ332806847","tipo":"detalhesTeorico","disciplina":"MEIO AMBIENTE CIDADANIA"}, requestHeaders:['X-Update', 'divDetalhes']}) }, false);
+                //]]>
+              </script>
+            </td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="/portal/habilitacao/biometriaValid"
+                id="link763620003"
+                onclick=" event.returnValue = false; return false;"
+                >NOÇÕES DE MECÂNICA VEICULAR</a
+              >
+              <script type="text/javascript">
+                //
+                                                <![CDATA[
+                Event.observe('link763620003', 'click', function(event) { $("divDetalhes").update("");; new Ajax.Updater('divDetalhes','/portal/habilitacao/biometriaValid', {asynchronous:true, evalScripts:true, onComplete:function(request, json) {$("divDetalhes").scrollTo();Element.hide('div-waiting');}, onLoading:function(request) {Element.show('div-waiting');}, parameters:{"renach":"RJ332806847","tipo":"detalhesTeorico","disciplina":"NO\u00c7\u00d5ES DE MEC\u00c2NICA VEICULAR"}, requestHeaders:['X-Update', 'divDetalhes']}) }, false);
+                //]]>
+              </script>
+            </td>
+            <td>3</td>
+          </tr>
+        </table>
+        <div id="divDetalhes"></div>
+      </div>
+      <div id="footer">&nbsp;</div>
+    </div>
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script>
+    var disciplinas = [];
+
+    var obj1 = [];
+
+    var obj2 = [];
+
+    $("tr td").each(function (indice) {
+      var nome = $(this).find("a").text();
+      var valor = $(this).text();
+
+      if (nome != "") {
+        obj1[indice] = { nome: nome };
+      }
+
+      if (!valor.startsWith("\n")) {
+        obj2[indice] = { qtd: valor };
+      }
+    });
+
+    obj1 = startFromZero(obj1);
+    //console.log(obj1);
+
+    obj2 = startFromZero(obj2);
+    //console.log(obj2);
+
+    for (var i = 0; i < obj1.length; i++) {
+      disciplinas.push({ nome: capitalize(obj1[i].nome), qtd: obj2[i].qtd });
+    }
+
+    console.log(disciplinas);
+
+    function startFromZero(arr) {
+      var newArr = [];
+      var count = 0;
+
+      for (var i in arr) {
+        newArr[count++] = arr[i];
+      }
+
+      return newArr;
+    }
+
+    function capitalize(str) {
+      str = str.toLowerCase();
+      if (typeof str !== "string") {
+        return "";
+      }
+      return str.charAt(0).toUpperCase() + str.substr(1);
+    }
+    
+  </script>
+</body>
