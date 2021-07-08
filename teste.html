@@ -240,7 +240,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-  <script>
+  <!--script>
     var aula = [];
     var obj1 = {};
     var aulas = [];
@@ -270,5 +270,52 @@
     }
     
     console.log(aulas);    
-  </script>
+  </script-->
+
+
+<script>
+    
+    var details = {
+    'renach': 'RJ332806847',    
+    'tipo': 'resumo'
+};
+
+var formBody = [];
+for (var property in details) {
+  var encodedKey = encodeURIComponent(property);
+  var encodedValue = encodeURIComponent(details[property]);
+  formBody.push(encodedKey + "=" + encodedValue);
+}
+formBody = formBody.join("&");
+
+
+async function request() {
+    console.log('aqui 0')
+         await fetch('https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    'Access-Control-Allow-Origin': '*'  
+  },
+  body: formBody,
+  
+  curl -d "renach=RJ332806847&tipo=resumo" -H "Content-Type: application/x-www-form-urlencoded" -X POST https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid
+
+curl -k -d "renach=RJ332806847&tipo=resumo" -H "Content-Type: application/x-www-form-urlencoded" -X POST https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid
+  
+})
+.then(res => {
+    console.log('aqui 1')
+
+    
+})
+console.log('aqui 2')
+}
+
+
+request();
+
+
+</script>
+
 </body>
