@@ -241,7 +241,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-  <script>
+  <!--script>
     var aula = [];
     var obj1 = {};
     var aulas = [];
@@ -270,39 +270,53 @@
       ultima = ultima + 6;             
     }
     
-      console.log(aulas);   
-   
-
-get();
-
-    async function get() {
+    console.log(aulas);    
+  </script-->
 
 
-
-      var form = new FormData();      
-      form.append("renach","RJ332806847");
-      form.append("disciplina","TEORICAS");
-      form.append("tipo","detalhesTeorico");
-
-
-      await fetch("https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid", {
-                body: form,
-                headers: {                 
-                  "Content-Type": "application/x-www-form-urlencoded",
-                  "Access-Control-Allow-Origin": "*"
-                },
-                method: "post",
-                "mode": "no-cors",                
-  })    
-    .then(data => {
-      console.log(data);
-    });
-
-
-
-}
+<script>
     
+    var details = {
+    'renach': 'RJ332806847',    
+    'tipo': 'resumo'
+};
+
+var formBody = [];
+for (var property in details) {
+  var encodedKey = encodeURIComponent(property);
+  var encodedValue = encodeURIComponent(details[property]);
+  formBody.push(encodedKey + "=" + encodedValue);
+}
+formBody = formBody.join("&");
 
 
-  </script>
+async function request() {
+    console.log('aqui 0')
+         await fetch('https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    'Access-Control-Allow-Origin': '*'  
+  },
+  body: formBody,
+  
+  curl -d "renach=RJ332806847&tipo=resumo" -H "Content-Type: application/x-www-form-urlencoded" -X POST https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid
+
+curl -k -d "renach=RJ332806847&tipo=resumo" -H "Content-Type: application/x-www-form-urlencoded" -X POST https://www2.detran.rj.gov.br/portal/habilitacao/biometriaValid
+  
+})
+.then(res => {
+    console.log('aqui 1')
+
+    
+})
+console.log('aqui 2')
+}
+
+
+request();
+
+
+</script>
+
 </body>
