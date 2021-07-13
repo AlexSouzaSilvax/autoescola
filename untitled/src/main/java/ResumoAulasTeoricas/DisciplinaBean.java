@@ -1,4 +1,6 @@
-public class Disciplina {
+package ResumoAulasTeoricas;
+
+public class DisciplinaBean {
 
     private String nome;
     private String quantidade;
