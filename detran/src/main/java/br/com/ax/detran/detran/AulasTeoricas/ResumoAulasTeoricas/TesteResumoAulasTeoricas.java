@@ -9,16 +9,22 @@ public class TesteResumoAulasTeoricas {
 
     	ResumoAulasTeoricasService disciplinaController = new ResumoAulasTeoricasService();
 
-        String renach = "RJ332806847"; //meu
-        //String renach = "RJ931486076"; //junior
-        //String renach = "RJ931739390"; //tias
+        String renach = "332806847"; //meu
 
        List<ResumoAulasTeoricasBean> disciplinaBeans = disciplinaController.convertRetornoResumo(disciplinaController.requestResumoAulas(renach));
 
        for(int i = 0; i < disciplinaBeans.size(); i++) {
           System.out.println(disciplinaBeans.get(i).getQuantidade() + " - " + disciplinaBeans.get(i).getNome());
        }
+/*
+Dados retornados dia 02/09/21 02:16  
+17 - Legislação De Trânsito
+4 - Primeiros Socorros
+13 - Direção Defensiva
+4 - Meio Ambiente Cidadania
+3 - Noções De Mecânica Veicular
 
+*/
     }
 
 
